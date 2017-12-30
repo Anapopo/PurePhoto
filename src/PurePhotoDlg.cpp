@@ -1,5 +1,5 @@
 
-// PurePhotoDlg.cpp : ÊµÏÖÎÄ¼ş
+// PurePhotoDlg.cpp : å®ç°æ–‡ä»¶
 #include "stdafx.h"
 #include "PurePhoto.h"
 #include "PurePhotoDlg.h"
@@ -9,19 +9,19 @@
 #define new DEBUG_NEW
 #endif
 
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -38,11 +38,11 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-// CPurePhotoDlg ¶Ô»°¿ò
+// CPurePhotoDlg å¯¹è¯æ¡†
 CPurePhotoDlg::CPurePhotoDlg(CWnd* pParent /*=NULL*/): CDialogEx(CPurePhotoDlg::IDD, pParent), debugInfo(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-	//Ò»Ğ©±äÁ¿³õÊ¼»¯
+	//ä¸€äº›å˜é‡åˆå§‹åŒ–
 	currentSrc = new Mat;
 	pDlg = new ElementSetDlg();
 }
@@ -70,12 +70,12 @@ BEGIN_MESSAGE_MAP(CPurePhotoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_SAVE, &CPurePhotoDlg::OnBnClickedBtnSave)
 END_MESSAGE_MAP()
 
-// CPurePhotoDlg ÏûÏ¢´¦Àí³ÌĞò
+// CPurePhotoDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 BOOL CPurePhotoDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -93,16 +93,16 @@ BOOL CPurePhotoDlg::OnInitDialog()
 		}
 	}
 
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£  µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚  å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 	
 	
-	//³õÊ¼»¯¶Ô»°¿ò
+	//åˆå§‹åŒ–å¯¹è¯æ¡†
 	m_choose_style.SetCurSel(0);
 
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
 void CPurePhotoDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -119,25 +119,25 @@ void CPurePhotoDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£  ¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚  å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 void CPurePhotoDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
 		GetClientRect(&rect);
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -147,13 +147,13 @@ void CPurePhotoDlg::OnPaint()
 
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±êÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡æ˜¾ç¤ºã€‚
 HCURSOR CPurePhotoDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-//CString ×ª»»Îªchar*
+//CString è½¬æ¢ä¸ºchar*
 char* CPurePhotoDlg::CString2Char(CString str)
 {
 	char *ch = new char[32];
@@ -162,122 +162,143 @@ char* CPurePhotoDlg::CString2Char(CString str)
 	return ch;
 }
 
-//ÀûÓÃDCÔÚÍ¼ÏñÏÔÊ¾ÇøÓò»æÍ¼£¨½â¾öÊ§ÕæÎÊÌâ£©
+//åˆ©ç”¨DCåœ¨å›¾åƒæ˜¾ç¤ºåŒºåŸŸç»˜å›¾ï¼ˆè§£å†³å¤±çœŸé—®é¢˜ï¼‰
 void CPurePhotoDlg::DrawPicToHDC(IplImage *img, UINT ID)
-{
-	CDC *pDC = GetDlgItem(ID)->GetDC();
-	HDC hDC = pDC->GetSafeHdc();
+{	
+	//åŸå§‹å‚æ•°
 	CRect rect;
-	GetDlgItem(ID)->GetClientRect(&rect);
-
-	//¿ò¿ò²ÎÊı
-	CPoint p1 = rect.TopLeft();//ºáx£¬Êúy
-	CPoint p2 = rect.BottomRight();
-
+	int rect_width = 805;
+	int rect_height = 476;
+	
+	// å¤åˆ¶å›¾ç‰‡
 	CvvImage cimg;
-	cimg.CopyOf(img); // ¸´ÖÆÍ¼Æ¬
-	//Í¼Æ¬²ÎÊı
+	cimg.CopyOf(img); 
+
+	//å›¾ç‰‡å‚æ•°
 	int width = cimg.Width();
 	int height = cimg.Height();
-	double per = width*1.0 / height;//ºá×İ±ÈÀı
+	double per = width*1.0 / height;//æ¨ªçºµæ¯”ä¾‹
+	int new_height = height;
+	int	new_width = width;
+	//éœ€è¦è¿›è¡Œç¼©æ”¾
+	if (rect_width < new_width || rect_height < new_height)
+	{
+		//è®¡ç®—åˆé€‚çš„ç¼©æ”¾
+		new_width = rect_width;
+		new_height = new_width / per;
 
-	//ÊÓ¿ÚÔ­Ê¼²ÎÊı
-	int offset_x = 0;
-	int rect_width = p2.x - p1.x;
-	int rect_height = p2.y - p1.y;
-
-	double per2 = rect_width / width;
-	double per3 = rect_height / height;
-
-	int new_height = rect_height;
-	int new_width =  new_height * per;
-	if (new_width >= rect_width) new_width = rect_width;
-	else {
-		offset_x = (rect_width/2 - new_width/2);
+		if (new_height > rect_height)
+		{
+			double scale = new_height * 1.0 / rect_height;
+			new_height = rect_height / scale;
+			new_width = new_height * per;
+		}
+		
+		CPoint leftTop(0, 0);
+		rect = CRect(leftTop, CSize(new_width, new_height));
 	}
-	//todo ÍêÕûÏÔÊ¾
-	rect.SetRect(p1.x+offset_x, p1.y, p1.x+offset_x+new_width, p1.y+new_height);
-	
 
-	cimg.DrawToHDC(hDC, &rect); // ½«Í¼Æ¬»æÖÆµ½ÏÔÊ¾¿Ø¼şµÄÖ¸¶¨ÇøÓòÄÚ
+	//å›¾ç‰‡å±…ä¸­æ˜¾ç¤º
+	int offset_x = (rect_width / 2 - new_width / 2);
+	int offset_y = (rect_height / 2 - new_height / 2);
+	CPoint leftTop(offset_x, offset_y);
+	rect = CRect(leftTop, CSize(new_width, new_height));
+	
+	//å¼€å§‹ä½œå›¾
+	CDC *pDC = GetDlgItem(ID)->GetDC();
+	HDC hDC = pDC->GetSafeHdc();
+	cimg.DrawToHDC(hDC, &rect); // å°†å›¾ç‰‡ç»˜åˆ¶åˆ°æ˜¾ç¤ºæ§ä»¶çš„æŒ‡å®šåŒºåŸŸå†…
 	ReleaseDC(pDC);
 }
 
-//´ò¿ªÍ¼Ïñ°´Å¥ÊÂ¼ş´¦Àí
+//æ‰“å¼€å›¾åƒæŒ‰é’®äº‹ä»¶å¤„ç†
 void CPurePhotoDlg::OnBnClickedBtnOpen()
 {
+	CString strFilePath;
+	string charPath;
 
-	//Ñ¡ÔñÍ¼Æ¬
-	CFileDialog fileDlg(TRUE, _T("png"), NULL, 0, _T("image Files(*.bmp; *.jpg;*.png)|*.JPG;*.PNG;*.BMP|All Files (*.*) |*.*||"), this);
-	fileDlg.DoModal();
-	//»ñÈ¡Í¼Æ¬Â·¾¶ºÍÍ¼Æ¬Ãû³Æ
-	CString strFilePath = fileDlg.GetPathName();
-	CString strFileName = fileDlg.GetFileName();
-	//ÅĞ¶ÏÂ·¾¶²»Îª¿Õ
-	if (strFilePath == _T("")) return;
-	char *charPath = CString2Char(strFilePath);
+	//é€‰æ‹©å›¾ç‰‡
+	CFileDialog fileDlg(TRUE, //TRUEä¸ºOPENå¯¹è¯æ¡†ï¼ŒFALSEä¸ºSAVE ASå¯¹è¯æ¡†
+		NULL,
+		NULL,
+		OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+		(LPCTSTR)_TEXT("JPG Files (*.jpg)|*.jpg|BMP Files (*.bmp)|*.bmp|All Files (*.*)|*.*||"),
+		NULL);
 
+	//åˆ¤æ–­è·¯å¾„ä¸ä¸ºç©º
+	if (fileDlg.DoModal() == IDOK) {
+		//è·å–å›¾ç‰‡è·¯å¾„å’Œå›¾ç‰‡åç§°
+		strFilePath = fileDlg.GetPathName();
+		//CString strFileName = fileDlg.GetFileName();
+		if (strFilePath == _T("")) return;
+		charPath = CT2A(strFilePath);
+	}
+	else return;
+
+	//æ›´æ–°è°ƒè¯•ä¿¡æ¯
 	UpdateData();
 	debugInfo.SetString(strFilePath);
 	UpdateData(FALSE);
 
-	IplImage *image = NULL; //Ô­Ê¼Í¼Ïñ
+	IplImage *image = NULL; //åŸå§‹å›¾åƒ
 	if (image) cvReleaseImage(&image);
-	image = cvLoadImage(charPath, CV_LOAD_IMAGE_COLOR); //ÏÔÊ¾Í¼Æ¬
+	image = cvLoadImage(charPath.c_str(), CV_LOAD_IMAGE_COLOR); //æ˜¾ç¤ºå›¾ç‰‡
 
 	Mat temp = imread(charPath, CV_LOAD_IMAGE_COLOR);
 	temp.copyTo(*currentSrc);
-	
-	int len = strlen(charPath);    //¼ÆËã×Ö·û´®³¤¶È  
-	currentPicPath = new char[len + 1];    //·ÖÅä´æ´¢¿Õ¼ä  
-	strcpy_s(currentPicPath, len + 1, charPath); //½«sÖĞ×Ö·û´®¸´ÖÆµ½str£¬×îºóÒ»¸ö¿Õ¼äÎª'\0'½áÊø·û  
+	currentPicPath = charPath;
 
-	//Çå¿Õ»­Ãæ
+	//æ¸…ç©ºç”»é¢
 	InvalidateRect(NULL);
 	UpdateWindow();
 	DrawPicToHDC(image, IDC_CV_PIC);
-	delete charPath;
 }
 
-//¹Ø±ÕÍ¼Ïñ°´Å¥ÊÂ¼ş´¦Àí
+//å…³é—­å›¾åƒæŒ‰é’®äº‹ä»¶å¤„ç†
 void CPurePhotoDlg::OnBnClickedBtnClose()
 {
-	IplImage *image = cvLoadImage("D:\\default.png", 1); //ÏÔÊ¾Í¼Æ¬ 
-	DrawPicToHDC(image, IDC_CV_PIC);
-	if (image) cvReleaseImage(&image);
-	//±£´æÖÁÕ»Çø
-	Mat temp = imread("D:\\default.png", CV_LOAD_IMAGE_COLOR);
-	temp.copyTo(*currentSrc);
+	//é‡æ–°ç»˜åˆ¶ç”»é¢
+	InvalidateRect(NULL);
+	UpdateWindow();
+	//é‡Šæ”¾å›¾åƒ
+	if (currentSrc)
+		currentSrc->release();
 }
 
-//Éè¶¨½á¹¹ÔªËØ°´Å¥ÊÂ¼ş´¦Àí
+//è®¾å®šç»“æ„å…ƒç´ æŒ‰é’®äº‹ä»¶å¤„ç†
 void CPurePhotoDlg::OnBnClickedBtnElmSet(){ pDlg->DoModal(); }
 
-//ÖØÖÃÍ¼Ïñ°´Å¥ÊÂ¼ş´¦Àí
+//é‡ç½®å›¾åƒæŒ‰é’®äº‹ä»¶å¤„ç†
 void CPurePhotoDlg::OnBnClickedBtnResetPic()
 {
-	//ÅĞ¶ÏÊÇ·ñÔØÈë
-	if (!currentPicPath)
+	//åˆ¤æ–­æ˜¯å¦è½½å…¥
+	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
-	//ÔØÈë»­ÃæÏÔÊ¾TODO£ººÏ²¢
-	IplImage *image = cvLoadImage(currentPicPath, 1);
-	DrawPicToHDC(image, IDC_CV_PIC);
+
+	//é‡æ–°ç»˜åˆ¶ç”»é¢
+	InvalidateRect(NULL);
+	UpdateWindow();
+
+	//è½½å…¥ç”»é¢æ˜¾ç¤º
+	IplImage *image = NULL; //åŸå§‹å›¾åƒ
 	if (image) cvReleaseImage(&image);
-	
-	//ÔØÈëÕ»Çø
+	image = cvLoadImage(currentPicPath.c_str(), CV_LOAD_IMAGE_COLOR); //æ˜¾ç¤ºå›¾ç‰‡
+	DrawPicToHDC(image, IDC_CV_PIC);
+
+	//è½½å…¥æ ˆåŒº
 	Mat temp = imread(currentPicPath, CV_LOAD_IMAGE_COLOR);
 	temp.copyTo(*currentSrc);
 }
 
-//¸¯Ê´°´Å¥ÊÂ¼ş´¦Àí OK
+//è…èš€æŒ‰é’®äº‹ä»¶å¤„ç† OK
 void CPurePhotoDlg::OnBnClickedBtnErode()
 {	
 	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
 	Mat dst;
@@ -287,17 +308,17 @@ void CPurePhotoDlg::OnBnClickedBtnErode()
 	else
 		MultiFilter(ERODE, *currentSrc, dst);
 	dst.copyTo(*currentSrc);
-	//Í¼ÏñÏÔÊ¾
+	//å›¾åƒæ˜¾ç¤º
 	IplImage *img = new IplImage(*currentSrc);
 	DrawPicToHDC(img, IDC_CV_PIC);
 }
 
-//ÅòÕÍ°´Å¥ÊÂ¼ş´¦Àí OK
+//è†¨èƒ€æŒ‰é’®äº‹ä»¶å¤„ç† OK
 void CPurePhotoDlg::OnBnClickedBtnDilate()
 {
 	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
 	Mat dst;
@@ -307,17 +328,17 @@ void CPurePhotoDlg::OnBnClickedBtnDilate()
 	else
 		MultiFilter(DILATE, *currentSrc, dst);
 	dst.copyTo(*currentSrc);
-	//Í¼ÏñÏÔÊ¾
+	//å›¾åƒæ˜¾ç¤º
 	IplImage *img = new IplImage(*currentSrc);
 	DrawPicToHDC(img, IDC_CV_PIC);
 }
 
-//¶şÖµ»¯°´Å¥ÊÂ¼ş´¦Àí
+//äºŒå€¼åŒ–æŒ‰é’®äº‹ä»¶å¤„ç†
 void CPurePhotoDlg::OnBnClickedBtnBin()
 {
 	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
 
@@ -333,12 +354,12 @@ void CPurePhotoDlg::OnBnClickedBtnBin()
 	}
 }
 
-//¿ªÔËËã°´Å¥ÊÂ¼ş´¦Àí OK
+//å¼€è¿ç®—æŒ‰é’®äº‹ä»¶å¤„ç† OK
 void CPurePhotoDlg::OnBnClickedBtnClaOpen()
 {
 	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
 	Mat dst;
@@ -348,17 +369,17 @@ void CPurePhotoDlg::OnBnClickedBtnClaOpen()
 	else
 		MultiFilter(OPEN, *currentSrc, dst);
 	dst.copyTo(*currentSrc);
-	//Í¼ÏñÏÔÊ¾
+	//å›¾åƒæ˜¾ç¤º
 	IplImage *img = new IplImage(*currentSrc);
 	DrawPicToHDC(img, IDC_CV_PIC);
 }
 
-//±ÕÔËËã°´Å¥ÊÂ¼ş´¦Àí OK
+//é—­è¿ç®—æŒ‰é’®äº‹ä»¶å¤„ç† OK
 void CPurePhotoDlg::OnBnClickedBtnClaClose()
 {
 	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
 	Mat dst;
@@ -368,42 +389,42 @@ void CPurePhotoDlg::OnBnClickedBtnClaClose()
 	else
 		MultiFilter(CLOSE, *currentSrc, dst);
 	dst.copyTo(*currentSrc);
-	//Í¼ÏñÏÔÊ¾
+	//å›¾åƒæ˜¾ç¤º
 	IplImage *img = new IplImage(*currentSrc);
 	DrawPicToHDC(img, IDC_CV_PIC);
 }
 
-//¶àÍ¨µÀ¶àÀàĞÍËã·¨ OK
+//å¤šé€šé“å¤šç±»å‹ç®—æ³• OK
 void CPurePhotoDlg::MultiFilter(FilterType type, const Mat src, Mat &dst)
 {	
 	Mat temp;
-	vector<Mat> channels;//´æ´¢´¦ÀíÇ°ÈıÍ¨µÀ
-	vector<Mat> dsts;//´æ´¢´¦ÀíºóÈıÍ¨µÀ
+	vector<Mat> channels;//å­˜å‚¨å¤„ç†å‰ä¸‰é€šé“
+	vector<Mat> dsts;//å­˜å‚¨å¤„ç†åä¸‰é€šé“
 
 	split(src, channels);
 	split(src, dsts);
 	for (int i = 0; i < 3; i++)
 	{
 		switch (type){
-		case ERODE:
-			ErodeFilter(channels[i].data, dsts[i].data, channels[i].cols, channels[i].rows);
-			break;
-		case DILATE:
-			DilateFilter(channels[i].data, dsts[i].data, channels[i].cols, channels[i].rows);
-			break;
-		case OPEN:
-			OpenFilter(channels[i].data, dsts[i].data, channels[i].cols, channels[i].rows);
-			break;
-		case CLOSE:
-			CloseFilter(channels[i].data, dsts[i].data, channels[i].cols, channels[i].rows);
-			break;
+			case ERODE:
+				ErodeFilter(channels[i].data, dsts[i].data, src.cols, src.rows);
+				break;
+			case DILATE:
+				DilateFilter(channels[i].data, dsts[i].data, src.cols, src.rows);
+				break;
+			case OPEN:
+				OpenFilter(channels[i].data, dsts[i].data, src.cols, src.rows);
+				break;
+			case CLOSE:
+				CloseFilter(channels[i].data, dsts[i].data, src.cols, src.rows);
+				break;
 		}
 	}
 	merge(dsts, temp);
 	temp.copyTo(dst);
 }
 
-//µ¥Í¨µÀÅòÕÍËã·¨ OK ÔÙÊÔÊÔ3*3»ò¶¯Ì¬µ÷ÕûµÄ
+//å•é€šé“è†¨èƒ€ç®—æ³• OK å†è¯•è¯•3*3æˆ–åŠ¨æ€è°ƒæ•´çš„
 void CPurePhotoDlg::DilateFilter(const uint8_t src_data[], uint8_t dst_data[], int cols, int rows)
 {
 
@@ -421,9 +442,8 @@ void CPurePhotoDlg::DilateFilter(const uint8_t src_data[], uint8_t dst_data[], i
 			{
 				for (n = -IMG_OFFSET; n <= IMG_OFFSET; n++)
 				{
-					tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = src_data[(i + m)*cols + j + n];
-					//
-					tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] += pDlg->elm[m + 2][n + 2];
+					tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = src_data[(i + m)*cols + j + n] + pDlg->elm[m + 2][n + 2];
+					
 					if (tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] > 255)
 						tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = 255;
 				}
@@ -436,7 +456,7 @@ void CPurePhotoDlg::DilateFilter(const uint8_t src_data[], uint8_t dst_data[], i
 	}
 }
 
-//µ¥Í¨µÀ¸¯Ê´Ëã·¨ OK
+//å•é€šé“è…èš€ç®—æ³• OK
 void CPurePhotoDlg::ErodeFilter(const uint8_t src_data[], uint8_t dst_data[], int cols, int rows)
 {
 	short IMG_OFFSET = (pDlg->m_elm_size_save != 0) ? pDlg->m_elm_size_save : 1;
@@ -449,27 +469,29 @@ void CPurePhotoDlg::ErodeFilter(const uint8_t src_data[], uint8_t dst_data[], in
 	{
 		for (j = IMG_OFFSET; j < cols - IMG_OFFSET; j++)
 		{
+
 			for (m = -IMG_OFFSET; m <= IMG_OFFSET; m++)
 			{
 				for (n = -IMG_OFFSET; n <= IMG_OFFSET; n++)
 				{
-					tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = src_data[(i + m)*cols + j + n];
-					//
-					tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] -= pDlg->elm[m + 2][n + 2];
-					if (tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] < 0) 
+					tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = src_data[(i + m)*cols + j + n] - pDlg->elm[m + 2][n + 2];
+
+					if (tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] < 0)
 						tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = 0;
 				}
 			}
 			int min = 0xffffff;
 			for (int k = 0; k < ST_WIDTH*ST_WIDTH; k++)
-			if (tmp[k] < min) min = tmp[k];
+				if (tmp[k] < min) min = tmp[k];
 			dst_data[i*cols + j] = min;
+			
+
 		}
 	}
 
 }
 
-//µ¥Í¨µÀ¿ªÔËËã£¨¸¯Ê´+ÅòÕÍ£©Ëã·¨ OK
+//å•é€šé“å¼€è¿ç®—ï¼ˆè…èš€+è†¨èƒ€ï¼‰ç®—æ³• OK
 void CPurePhotoDlg::OpenFilter(const uint8_t src_data[], uint8_t dst_data[], int cols, int rows)
 {
 	uint8_t *proc = new uint8_t[cols*rows];
@@ -479,7 +501,7 @@ void CPurePhotoDlg::OpenFilter(const uint8_t src_data[], uint8_t dst_data[], int
 	delete proc;
 }
 
-//µ¥Í¨µÀ±ÕÔËËã£¨ÅòÕÍ+¸¯Ê´£©Ëã·¨ OK
+//å•é€šé“é—­è¿ç®—ï¼ˆè†¨èƒ€+è…èš€ï¼‰ç®—æ³• OK
 void CPurePhotoDlg::CloseFilter(const uint8_t src_data[], uint8_t dst_data[], int cols, int rows)
 {
 	uint8_t *proc = new uint8_t[cols*rows];
@@ -489,7 +511,7 @@ void CPurePhotoDlg::CloseFilter(const uint8_t src_data[], uint8_t dst_data[], in
 	delete proc;
 }
 
-//¶şÖµ»¯Ëã·¨ OK
+//äºŒå€¼åŒ–ç®—æ³• OK
 void CPurePhotoDlg::BinFilter(const Mat src, Mat &dst)
 {
 	Mat temp1, temp2;
@@ -498,12 +520,12 @@ void CPurePhotoDlg::BinFilter(const Mat src, Mat &dst)
 	cvtColor(temp2, dst, CV_GRAY2RGB);
 }
 
-//±£´æÍ¼Ïñ°´Å¥ÊÂ¼ş´¦Àí
+//ä¿å­˜å›¾åƒæŒ‰é’®äº‹ä»¶å¤„ç†
 void CPurePhotoDlg::OnBnClickedBtnSave()
 {
 	if (!currentSrc->data)
 	{
-		MessageBox(_T("ÇëÏÈÔØÈëÍ¼Ïñ£¡"), _T("´íÎó£¡"), MB_OK);
+		MessageBox(_T("è¯·å…ˆè½½å…¥å›¾åƒï¼"), _T("é”™è¯¯ï¼"), MB_OK);
 		return;
 	}
 	CFileDialog fileDlg(FALSE, _T("png"), _T("MyProcImg.png"), 0, _T("image Files(*.jpg;*.png)|*.JPG;*.PNG;*.BMP|All Files (*.*) |*.*||"), this);
@@ -515,8 +537,8 @@ void CPurePhotoDlg::OnBnClickedBtnSave()
 		if (strFilePath)
 		{
 			string str = CStringA(strFilePath);
-			imwrite(str, *currentSrc);//½«imageÍ¼Ïñ±£´æ
-			MessageBox(_T("Í¼ÏñÒÑ³É¹¦±£´æ!"), _T("²Ù×÷³É¹¦£¡"), MB_OK);
+			imwrite(str, *currentSrc);//å°†imageå›¾åƒä¿å­˜
+			MessageBox(_T("å›¾åƒå·²æˆåŠŸä¿å­˜!"), _T("æ“ä½œæˆåŠŸï¼"), MB_OK);
 		}
 	}
 	
