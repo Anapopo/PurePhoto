@@ -432,14 +432,14 @@ void CPurePhotoDlg::DilateFilter(const uint8_t src_data[], uint8_t dst_data[], i
             {
                 for (n = -IMG_OFFSET; n <= IMG_OFFSET; n++)
                 {
-                    tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = src_data[(i + m)*cols + j + n] + pDlg->elm[m + 2][n + 2];
-                    if (tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] > 255)
-                        tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = 255;
+                    int pos = (m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET;
+                    tmp[pos] = src_data[(i + m)*cols + j + n] + pDlg->elm[m + 2][n + 2];
+                    if (tmp[pos] > 255) tmp[pos] = 255;
                 }
             }
             int max = 0;
             for (int k = 0; k < ST_WIDTH*ST_WIDTH; k++)
-            if (tmp[k] > max) max = tmp[k];
+                if (tmp[k] > max) max = tmp[k];
             dst_data[i*cols + j] = max;
         }
     }
@@ -463,9 +463,9 @@ void CPurePhotoDlg::ErodeFilter(const uint8_t src_data[], uint8_t dst_data[], in
             {
                 for (n = -IMG_OFFSET; n <= IMG_OFFSET; n++)
                 {
-                    tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = src_data[(i + m)*cols + j + n] - pDlg->elm[m + 2][n + 2];
-                    if (tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] < 0)
-                        tmp[(m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET] = 0;
+                    int pos = (m + IMG_OFFSET) * ST_WIDTH + n + IMG_OFFSET;
+                    tmp[pos] = src_data[(i + m)*cols + j + n] - pDlg->elm[m + 2][n + 2];
+                    if (tmp[pos] < 0) tmp[pos] = 0;
                 }
             }
             int min = 0xffffff;
