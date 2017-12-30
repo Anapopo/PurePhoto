@@ -1,4 +1,8 @@
-
+/*
+ * Author: Anapopo
+ * Github Repo: https://github.com/Anapopo/PurePhoto
+ * License: GPL-3.0
+ */
 // PurePhotoDlg.cpp : 实现文件
 #include "stdafx.h"
 #include "PurePhoto.h"
@@ -15,7 +19,7 @@ class CAboutDlg : public CDialogEx
 public:
     CAboutDlg();
 
-// 对话框数据
+    // 对话框数据
     enum { IDD = IDD_ABOUTBOX };
 
     protected:
